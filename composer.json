@@ -1,0 +1,22 @@
+{
+  "name": "vuleticd/orderhistory",
+  "description": "Mage2 extension to enable customer order history to be displayed in new Mage2 website, in read only mode.",
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "OSL-3.0"
+  ],
+  "require": {
+    "php": "~5.5.0|~5.6.0",
+    "magento/magento-composer-installer": "*",
+    "magento/module-sales": "*"
+  },
+  "extra": {
+    "map": [
+      [
+        "*",
+        "Vuleticd/OrderHistory"
+      ]
+    ]
+  }
+}
