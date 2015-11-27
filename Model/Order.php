@@ -39,6 +39,7 @@ class Order  extends \Magento\Framework\Model\AbstractModel implements OrderInte
      */
     protected $_eventPrefix = 'sales_history_order';
 	
+	
 	/**
      * Initialize resource model
      *
@@ -79,4 +80,5 @@ class Order  extends \Magento\Framework\Model\AbstractModel implements OrderInte
     {
         return $this->setData(self::ORDER_ID, $order_id);
     }
+	
 }

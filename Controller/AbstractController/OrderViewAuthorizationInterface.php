@@ -18,10 +18,15 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
  
-namespace Vuleticd\OrderHistory\Controller\Order;
+namespace Vuleticd\OrderHistory\Controller\AbstractController;
 
-use Vuleticd\OrderHistory\Controller\OrderInterface;
-
-class Old extends \Vuleticd\OrderHistory\Controller\AbstractController\Old implements OrderInterface
+interface OrderViewAuthorizationInterface
 {
+    /**
+     * Check if order can be viewed by user
+     *
+     * @param \Vuleticd\OrderHistory\Model\Order $order
+     * @return bool
+     */
+    public function canView(\Vuleticd\OrderHistory\Model\Order $order);
 }

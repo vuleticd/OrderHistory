@@ -18,10 +18,17 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
  
-namespace Vuleticd\OrderHistory\Controller\Order;
+namespace Vuleticd\OrderHistory\Controller\AbstractController;
 
-use Vuleticd\OrderHistory\Controller\OrderInterface;
+use Magento\Framework\App\RequestInterface;
 
-class Old extends \Vuleticd\OrderHistory\Controller\AbstractController\Old implements OrderInterface
+interface OrderLoaderInterface
 {
+    /**
+     * Load old order
+     *
+     * @param RequestInterface $request
+     * @return bool|\Magento\Framework\Controller\ResultInterface
+     */
+    public function load(RequestInterface $request);
 }
