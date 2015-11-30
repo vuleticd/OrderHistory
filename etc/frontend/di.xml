@@ -22,4 +22,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Vuleticd\OrderHistory\Controller\AbstractController\OrderLoaderInterface" type="\Vuleticd\OrderHistory\Controller\AbstractController\OrderLoader" />
     <preference for="Vuleticd\OrderHistory\Controller\AbstractController\OrderViewAuthorizationInterface" type="\Vuleticd\OrderHistory\Controller\AbstractController\OrderViewAuthorization" />
+	<type name="Magento\Sales\Block\Order\History">
+        <plugin name="vuleticd_orderhistory_list" type="\Vuleticd\OrderHistory\Plugin\HistoryPlugin" sortOrder="1" disabled="false" />
+    </type>
+	<preference for="Magento\Sales\Model\OrderRepository" type="\Vuleticd\OrderHistory\Model\OrderRepository" />
 </config>

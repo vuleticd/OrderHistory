@@ -81,4 +81,9 @@ class Order  extends \Magento\Framework\Model\AbstractModel implements OrderInte
         return $this->setData(self::ORDER_ID, $order_id);
     }
 	
+	public function formatPrice($price)
+	{
+		return $price;
+	}
+	
 }
