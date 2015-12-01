@@ -20,7 +20,61 @@
  // \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 namespace Vuleticd\OrderHistory\Model\Order;
 
+use Magento\Framework\Data\Collection\EntityFactoryInterface;
+use Magento\Framework\App\RequestInterface;
+
 class Collection extends \Magento\Framework\Data\Collection
 {
-
+	/**
+     * @var EntityFactoryInterface
+     */
+    protected $_entityFactory;
+	
+	/**
+     * Request
+     *
+     * @var \Magento\Framework\App\RequestInterface
+     */
+    protected $_request;
+	
+	/**
+     * @param EntityFactoryInterface $entityFactory
+	 * @param \Magento\Framework\App\RequestInterface $request
+     */
+    public function __construct(
+		EntityFactoryInterface $entityFactory,
+		RequestInterface $request
+	)
+    {
+		$this->_request = $request;
+        parent::__construct($entityFactory);
+    }
+	
+	/**
+     * Get request
+     *
+     * @return \Magento\Framework\App\RequestInterface
+     */
+    public function getRequest()
+    {
+        return $this->_request;
+    }
+	
+	public function getIterator()
+    {
+		$this->setPageSize(10); // hard coded here but could listen to configuration or request
+		
+		$iterator = parent::getIterator();
+        if (FALSE === $size = $this->getPageSize()) {
+            return $iterator;
+        }
+		
+		$page = $this->getRequest()->getParam('p', 1);
+        if ($page < 1) {
+            return $iterator;
+        }
+        $offset = $size * $page - $size;
+		
+		return new \LimitIterator($iterator, $offset, $size);
+    }
 }
